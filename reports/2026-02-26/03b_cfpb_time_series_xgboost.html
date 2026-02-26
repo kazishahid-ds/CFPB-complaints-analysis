@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupyter Notebook — generated with runcell</title>
+    <meta name="description" content="Exported with runcell — convert .ipynb notebooks to HTML or PDF anytime at runcell.dev." />
+    <meta name="generator" content="runcell" />
+    <style>
+        :root {
+            --jp-code-font-family: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+            --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            --jp-cell-prompt-width: 64px;
+            --jp-input-prompt-color: #307fc1;
+            --jp-output-prompt-color: #bf5b3d;
+            --jp-cell-input-bg: #f7f7f7;
+            --jp-layout-color0: #ffffff;
+            --jp-layout-color1: #f7f7f7;
+            --jp-border-color1: #e0e0e0;
+            --jp-content-font-color0: #000000;
+            --jp-content-font-color1: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--jp-content-font-family);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--jp-content-font-color0);
+            background-color: var(--jp-layout-color0);
+            margin: 0;
+            padding: 0;
+        }
+
+        .notebook-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Cell structure */
+        .cell {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .cell-prompt {
+            min-width: var(--jp-cell-prompt-width);
+            width: var(--jp-cell-prompt-width);
+            font-family: var(--jp-code-font-family);
+            font-size: 12px;
+            padding: 10px 8px 10px 0;
+            text-align: right;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .cell-content {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+
+        /* Input prompt styling - Jupyter blue */
+        .input-prompt {
+            color: var(--jp-input-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Output prompt styling - Jupyter red/orange */
+        .output-prompt {
+            color: var(--jp-output-prompt-color);
+            font-weight: bold;
+        }
+
+        /* Code cell input area */
+        .input-area {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            overflow-x: auto;
+        }
+
+        .input-area pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Output area */
+        .output-area {
+            margin-top: 0;
+        }
+
+        .output-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 4px;
+        }
+
+        .output-content {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 0;
+        }
+
+        .output-content pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* Stream output (stdout/stderr) */
+        .output-stream {
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .output-stderr {
+            background-color: #fdd;
+            padding: 8px 12px;
+            border-radius: 2px;
+        }
+
+        /* Execute result / display data */
+        .output-result {
+            padding: 4px 0;
+        }
+
+        .output-result pre {
+            margin: 0;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+        }
+
+        /* Image output */
+        .output-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* HTML output (DataFrames, etc.) */
+        .output-html {
+            overflow-x: auto;
+        }
+
+        .output-html table {
+            border-collapse: collapse;
+            font-size: 13px;
+            font-family: var(--jp-content-font-family);
+        }
+
+        .output-html table th,
+        .output-html table td {
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            text-align: left;
+        }
+
+        .output-html table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .output-html table tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        /* Error output */
+        .output-error {
+            background-color: #fff0f0;
+            padding: 8px 12px;
+            border-radius: 2px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Markdown cell styling */
+        .markdown-cell {
+            padding: 10px 0;
+        }
+
+        .markdown-cell h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0.67em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin: 0.83em 0;
+            padding-bottom: 0.3em;
+            border-bottom: 1px solid var(--jp-border-color1);
+        }
+
+        .markdown-cell h3 {
+            font-size: 1.25em;
+            font-weight: 600;
+            margin: 1em 0;
+        }
+
+        .markdown-cell h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin: 1.33em 0;
+        }
+
+        .markdown-cell h5 {
+            font-size: 0.875em;
+            font-weight: 600;
+            margin: 1.67em 0;
+        }
+
+        .markdown-cell h6 {
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2.33em 0;
+            color: #6a737d;
+        }
+
+        .markdown-cell p {
+            margin: 0 0 16px 0;
+            line-height: 1.6;
+        }
+
+        .markdown-cell code {
+            font-family: var(--jp-code-font-family);
+            font-size: 85%;
+            background-color: rgba(27, 31, 35, 0.05);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+        }
+
+        .markdown-cell pre {
+            background-color: var(--jp-cell-input-bg);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 3px;
+            padding: 16px;
+            overflow-x: auto;
+            font-size: 85%;
+            line-height: 1.45;
+        }
+
+        .markdown-cell pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            font-size: 100%;
+        }
+
+        .markdown-cell blockquote {
+            margin: 0 0 16px 0;
+            padding: 0 1em;
+            color: #6a737d;
+            border-left: 4px solid #dfe2e5;
+        }
+
+        .markdown-cell ul,
+        .markdown-cell ol {
+            margin: 0 0 16px 0;
+            padding-left: 2em;
+        }
+
+        .markdown-cell li {
+            margin: 0.25em 0;
+        }
+
+        .markdown-cell a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .markdown-cell a:hover {
+            text-decoration: underline;
+        }
+
+        .markdown-cell hr {
+            border: 0;
+            border-top: 1px solid var(--jp-border-color1);
+            margin: 24px 0;
+        }
+
+        .markdown-cell img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .markdown-cell table {
+            border-collapse: collapse;
+            margin: 0 0 16px 0;
+        }
+
+        .markdown-cell table th,
+        .markdown-cell table td {
+            border: 1px solid #dfe2e5;
+            padding: 6px 13px;
+        }
+
+        .markdown-cell table th {
+            font-weight: 600;
+            background-color: #f6f8fa;
+        }
+
+        .markdown-cell table tr:nth-child(2n) {
+            background-color: #f6f8fa;
+        }
+
+        /* Raw cell styling */
+        .raw-cell {
+            background-color: var(--jp-layout-color1);
+            border: 1px solid var(--jp-border-color1);
+            border-radius: 2px;
+            padding: 8px 12px;
+            font-family: var(--jp-code-font-family);
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+
+        /* Empty prompt placeholder */
+        .prompt-empty {
+            color: transparent;
+        }
+
+        .export-footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--jp-border-color1);
+            color: #555;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .export-footer a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .export-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [ ]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import xgboost as xgb
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.metrics import mean_absolute_error</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-error">---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+Cell In[2], line 5
+      3 import matplotlib.pyplot as plt
+      4 import xgboost as xgb
+----&gt; 5 from sklearn.model_selection import TimeSeriesSplit
+      6 from sklearn.metrics import mean_absolute_error
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\__init__.py:70
+     62 # `_distributor_init` allows distributors to run custom init code.
+     63 # For instance, for the Windows wheel, this is used to pre-load the
+     64 # vcomp shared library runtime for OpenMP embedded in the sklearn/.libs
+   (...)     67 # later is linked to the OpenMP runtime to make it possible to introspect
+     68 # it and importing it first would fail if the OpenMP dll cannot be found.
+     69 from sklearn import __check_build, _distributor_init  # noqa: E402 F401
+---&gt; 70 from sklearn.base import clone  # noqa: E402
+     71 from sklearn.utils._show_versions import show_versions  # noqa: E402
+     73 _submodules = [
+     74     "calibration",
+     75     "cluster",
+   (...)    111     "compose",
+    112 ]
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\base.py:20
+     18 from sklearn.exceptions import InconsistentVersionWarning
+     19 from sklearn.utils._metadata_requests import _MetadataRequester, _routing_enabled
+---&gt; 20 from sklearn.utils._missing import is_pandas_na, is_scalar_nan
+     21 from sklearn.utils._param_validation import validate_parameter_constraints
+     22 from sklearn.utils._repr_html.base import ReprHTMLMixin, _HTMLDocumentationLinkMixin
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\__init__.py:9
+      7 from sklearn.utils import metadata_routing
+      8 from sklearn.utils._bunch import Bunch
+----&gt; 9 from sklearn.utils._chunking import gen_batches, gen_even_slices
+     11 # Make _safe_indexing importable from here for backward compat as this particular
+     12 # helper is considered semi-private and typically very useful for third-party
+     13 # libraries that want to comply with scikit-learn's estimator API. In particular,
+     14 # _safe_indexing was included in our public API documentation despite the leading
+     15 # `_` in its name.
+     16 from sklearn.utils._indexing import _safe_indexing, resample, shuffle
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\_chunking.py:11
+      8 import numpy as np
+     10 from sklearn._config import get_config
+---&gt; 11 from sklearn.utils._param_validation import Interval, validate_params
+     14 def chunk_generator(gen, chunksize):
+     15     """Chunk generator, ``gen`` into lists of length ``chunksize``. The last
+     16     chunk may have a length less than ``chunksize``."""
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\_param_validation.py:17
+     14 from scipy.sparse import csr_matrix, issparse
+     16 from sklearn._config import config_context, get_config
+---&gt; 17 from sklearn.utils.validation import _is_arraylike_not_scalar
+     20 class InvalidParameterError(ValueError, TypeError):
+     21     """Custom exception to be raised when the parameter of a class/method/function
+     22     does not have a valid type or value.
+     23     """
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\validation.py:24
+     18 from sklearn import get_config as _get_config
+     19 from sklearn.exceptions import (
+     20     DataConversionWarning,
+     21     NotFittedError,
+     22     PositiveSpectrumWarning,
+     23 )
+---&gt; 24 from sklearn.utils._array_api import (
+     25     _asarray_with_order,
+     26     _convert_to_numpy,
+     27     _is_numpy_namespace,
+     28     _max_precision_float_dtype,
+     29     get_namespace,
+     30     get_namespace_and_device,
+     31 )
+     32 from sklearn.utils._dataframe import is_pandas_df, is_pandas_df_or_series
+     33 from sklearn.utils._isfinite import FiniteStatus, cy_isfinite
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\_array_api.py:20
+     18 from sklearn.externals.array_api_compat import numpy as np_compat
+     19 from sklearn.utils._dataframe import is_df_or_series
+---&gt; 20 from sklearn.utils.fixes import parse_version
+     22 # TODO: complete __all__
+     23 __all__ = ["xpx"]  # we import xpx here just to re-export it, need this to appease ruff
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\sklearn\utils\fixes.py:15
+     13 import numpy as np
+     14 import scipy
+---&gt; 15 import scipy.sparse.linalg
+     16 import scipy.stats
+     18 try:
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\scipy\sparse\linalg\__init__.py:134
+    132 from ._dsolve import *
+    133 from ._interface import *
+--&gt; 134 from ._eigen import *
+    135 from ._matfuncs import *
+    136 from ._onenormest import *
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\scipy\sparse\linalg\_eigen\__init__.py:11
+      9 from .arpack import *
+     10 from .lobpcg import *
+---&gt; 11 from ._svds import svds
+     13 from . import arpack
+     15 __all__ = [
+     16     'ArpackError', 'ArpackNoConvergence',
+     17     'eigs', 'eigsh', 'lobpcg', 'svds'
+     18 ]
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\scipy\sparse\linalg\_eigen\_svds.py:10
+      8 from scipy.sparse.linalg._interface import LinearOperator, aslinearoperator
+      9 from scipy.sparse.linalg._eigen.lobpcg import lobpcg  # type: ignore[no-redef]
+---&gt; 10 from scipy.sparse.linalg._svdp import _svdp
+     11 from scipy.linalg import svd
+     13 arpack_int = _arpack.timing.nbx.dtype
+
+File c:\Users\shouv\anaconda3\envs\tmu_capstone\Lib\site-packages\scipy\sparse\linalg\_svdp.py:23
+     20 from scipy.sparse.linalg import aslinearoperator
+     21 from scipy.linalg import LinAlgError
+---&gt; 23 from ._propack import _spropack  # type: ignore[attr-defined]
+     24 from ._propack import _dpropack  # type: ignore[attr-defined]
+     25 from ._propack import _cpropack  # type: ignore[attr-defined]
+
+ImportError: DLL load failed while importing _propack: The specified module could not be found.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h1>3.2 XGBoost as ML Model</h1></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [2]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre># Loading my 300k sample data
+df = pd.read_parquet("../data/processed/cfpb_sample_300k.parquet")</pre></div>
+            </div>
+        </div>
+        <div class="cell cell-code">
+            <div class="cell-prompt input-prompt">In [3]:</div>
+            <div class="cell-content">
+                <div class="input-area"><pre>print(f"Loaded {len(df):,} rows &amp; {len(df.columns)} columns")
+df.head()</pre></div>
+                <div class="output-area">
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt"></div>
+                        <div class="output-content">
+                            <div class="output-stream">Loaded 300,000 rows &amp; 23 columns
+</div>
+                        </div>
+                    </div>
+                    <div class="output-wrapper">
+                        <div class="cell-prompt output-prompt">Out[3]:</div>
+                        <div class="output-content">
+                            <div class="output-html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date received</th>
+      <th>Product</th>
+      <th>Sub-product</th>
+      <th>Issue</th>
+      <th>Sub-issue</th>
+      <th>Consumer complaint narrative</th>
+      <th>Company public response</th>
+      <th>Company</th>
+      <th>State</th>
+      <th>ZIP code</th>
+      <th>...</th>
+      <th>Date sent to company</th>
+      <th>Company response to consumer</th>
+      <th>Timely response?</th>
+      <th>Consumer disputed?</th>
+      <th>Complaint ID</th>
+      <th>year_quarter</th>
+      <th>geo</th>
+      <th>region</th>
+      <th>stratum</th>
+      <th>sample_n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2012-03-14</td>
+      <td>Bank account or service</td>
+      <td>Checking account</td>
+      <td>Making/receiving payments, sending money</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>BANK OF AMERICA, NATIONAL ASSOCIATION</td>
+      <td>ND</td>
+      <td>58503</td>
+      <td>...</td>
+      <td>2012-03-15</td>
+      <td>Closed with relief</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>35052</td>
+      <td>2012Q1</td>
+      <td>ND</td>
+      <td>Midwest</td>
+      <td>Bank account or service|2012Q1|Midwest</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2012-03-20</td>
+      <td>Bank account or service</td>
+      <td>Checking account</td>
+      <td>Problems caused by my funds being low</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>TCF NATIONAL BANK</td>
+      <td>MN</td>
+      <td>55125</td>
+      <td>...</td>
+      <td>2012-03-21</td>
+      <td>Closed with relief</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>37573</td>
+      <td>2012Q1</td>
+      <td>MN</td>
+      <td>Midwest</td>
+      <td>Bank account or service|2012Q1|Midwest</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2012-03-22</td>
+      <td>Bank account or service</td>
+      <td>Checking account</td>
+      <td>Making/receiving payments, sending money</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>WELLS FARGO &amp; COMPANY</td>
+      <td>MN</td>
+      <td>55110</td>
+      <td>...</td>
+      <td>2012-03-23</td>
+      <td>Closed without relief</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>39793</td>
+      <td>2012Q1</td>
+      <td>MN</td>
+      <td>Midwest</td>
+      <td>Bank account or service|2012Q1|Midwest</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2012-03-07</td>
+      <td>Bank account or service</td>
+      <td>Checking account</td>
+      <td>Making/receiving payments, sending money</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>Synovus Bank</td>
+      <td>OH</td>
+      <td>44108</td>
+      <td>...</td>
+      <td>2012-03-16</td>
+      <td>Closed without relief</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>34571</td>
+      <td>2012Q1</td>
+      <td>OH</td>
+      <td>Midwest</td>
+      <td>Bank account or service|2012Q1|Midwest</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2012-03-20</td>
+      <td>Bank account or service</td>
+      <td>Checking account</td>
+      <td>Problems caused by my funds being low</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>PNC Bank N.A.</td>
+      <td>PA</td>
+      <td>18944</td>
+      <td>...</td>
+      <td>2012-03-23</td>
+      <td>Closed without relief</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>37047</td>
+      <td>2012Q1</td>
+      <td>PA</td>
+      <td>Northeast</td>
+      <td>Bank account or service|2012Q1|Northeast</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 23 columns</p>
+</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cell cell-markdown">
+            <div class="cell-prompt prompt-empty">&nbsp;</div>
+            <div class="cell-content">
+                <div class="markdown-cell"><h3>3.1.1 Preparing XGBoost</h3></div>
+            </div>
+        </div>
+    </div>
+    <footer class="export-footer">
+        Exported with <a href="https://www.runcell.dev/tool/ipynb-to-html">runcell</a> — convert notebooks to HTML or PDF anytime at runcell.dev.
+    </footer>
+</body>
+</html>
