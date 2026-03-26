@@ -14,7 +14,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 print("Loading data...")
-df = pd.read_parquet("data/processed/cfpb_sample_300k.parquet")
+df = pd.read_parquet("data/processed/cfpb_full.parquet")
 
 # Filter to Credit reporting and build South vs Non-South segments
 print("Filtering to Credit reporting and building segments...")
