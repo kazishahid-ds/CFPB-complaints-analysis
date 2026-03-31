@@ -18,11 +18,9 @@ This repository contains the end-to-end workflow used for CFPB complaints analys
 ## Project Structure
 
 
-- `notebooks/01_cfpb_stratified_sampling_fixed.ipynb`
+- `notebooks/01_cfpb_stratified_sampling.ipynb`
 	- builds the sample pipeline and time features
 	- exports `data/processed/cfpb_sample_300k.parquet`
-- `notebooks/01_cfpb_stratified_sampling.ipynb`
-	- earlier/original variant of the 01 workflow
 - `notebooks/02_cfpb_eda_analysis.ipynb`
 	- EDA, descriptive visuals, and profiling reports
 - `notebooks/03a_cfpb_time_series_baseline.ipynb`
@@ -38,7 +36,7 @@ This repository contains the end-to-end workflow used for CFPB complaints analys
 Output locations:
 
 - `reports/`
-	- rendered HTML reports and figures
+	- rendered HTML & PDF reports and figures
 - `reports/2026-03-25/tables/`
 	- exported modeling tables from 03b/04
 - `models/`
