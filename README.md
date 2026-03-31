@@ -1,46 +1,46 @@
 # CFPB Complaints Analysis
 
-This repository contains the end-to-end workflow used for CFPB complaints analysis:
+This repository contains the CFPB workflow currently documented for notebooks 01-03:
 
-- stratified sampling and data preparation
+- data loading, preprocessing, and feature engineering
 - exploratory data analysis and profiling
-- quarterly time-series forecasting baselines
-- tree-based and neural forecasting experiments
-- regional-segment forecasting
+- baseline and tree-based time-series forecasting
+
+Notebook 04 workflows exist in the repository but are intentionally excluded from this README for now.
 
 ## Key Data Files
 
-- `data/processed/full_dataset.parquet`
-	- primary dataset used by 03a/03b/03c/04 forecasting workflows
-- `data/processed/cfpb_sample_300k.parquet`
-	- stratified sample used by EDA workflow (02)
+- `data/complaints.csv`
+	- raw CFPB complaint data source
+- `data/processed/credit_reporting_monthly_data.csv`
+	- monthly national credit-reporting aggregates (count, total, share)
+- `data/processed/credit_reporting_monthly_south_data.csv`
+	- monthly South-region credit-reporting aggregates
+- `data/processed/credit_reporting_monthly_non_south_data.csv`
+	- monthly Non-South-region credit-reporting aggregates
+- `data/processed/credit_card_dataset.parquet`
+	- trimmed credit-card subset exported by notebook 01 for downstream analysis
 
-## Project Structure
+## Notebook Scope (01-03)
 
-
-- `notebooks/01_cfpb_stratified_sampling.ipynb`
-	- builds the sample pipeline and time features
-	- exports `data/processed/cfpb_sample_300k.parquet`
+- `notebooks/01_cfpb_loading_preprocessing_feature_engr.ipynb`
+	- loads CFPB data, engineers time/geography features, performs product-level diagnostics
+	- includes quarterly credit-reporting complaint trend view
+	- exports trimmed credit-card subset for downstream notebooks
 - `notebooks/02_cfpb_eda_analysis.ipynb`
-	- EDA, descriptive visuals, and profiling reports
-- `notebooks/03a_cfpb_time_series_baseline.ipynb`
-	- classical baseline forecasting workflow (ETS/ARIMA/SARIMA/Theta/naive family)
-- `notebooks/03b_cfpb_time_series_tree.ipynb`
-	- leakage-safe RF + native XGBoost multi-horizon workflow
-	- includes tuning, baseline comparison, and exports
-- `notebooks/03c_cfpb_time_series_deep_learning.ipynb`
-	- NeuralProphet-based forecasting experiments
-- `notebooks/04_cfpb_time_series_south_vs_others.ipynb`
-	- segmented ETS comparison and forward forecast (South vs Others)
+	- exploratory analysis, descriptive statistics, and profiling outputs
+- `notebooks/03a_cfpb_creditreporting_monthly_baseline.ipynb`
+	- classical monthly share forecasting baselines (naive family, ETS, ARIMA/SARIMA, Theta, FFT)
+	- includes South vs Non-South comparison section
+- `notebooks/03b_cfpb_creditreporting_monthly_tree.ipynb`
+	- tree-based monthly forecasting workflow and comparisons against baseline family
 
-Output locations:
+## Reports
 
 - `reports/`
-	- rendered HTML & PDF reports and figures
-- `reports/2026-03-25/tables/`
-	- exported modeling tables from 03b/04
-- `models/`
-	- serialized model artifacts from 03c and 04
+	- rendered HTML/PDF outputs by run date
+- `reports/2026-03-31/`
+	- latest exported HTML/PDF reports for notebooks 01, 02, and 03a
 
 ## Environment Setup
 
@@ -50,27 +50,23 @@ Option 1: install from pip requirements
 pip install -r requirements.txt
 ```
 
-Option 2: use conda environment file
+Option 2: use the conda environment file
 
 ```bash
 conda env create -f environments/env_ts-forecast.yml
-conda activate ts-forecast
+conda activate tmu_capstone
 ```
 
-## Running the Workflows
+## Recommended Run Order (01-03)
 
-Recommended notebook order:
-
-1. `01_cfpb_stratified_sampling_fixed.ipynb`
-2. `02_cfpb_eda_analysis.ipynb`
-3. `03a_cfpb_time_series_baseline.ipynb`
-4. `03b_cfpb_time_series_tree.ipynb`
-5. `03c_cfpb_time_series_deep_learning.ipynb`
-6. `04_cfpb_time_series_south_vs_others.ipynb`
+1. `notebooks/01_cfpb_loading_preprocessing_feature_engr.ipynb`
+2. `notebooks/02_cfpb_eda_analysis.ipynb`
+3. `notebooks/03a_cfpb_creditreporting_monthly_baseline.ipynb`
+4. `notebooks/03b_cfpb_creditreporting_monthly_tree.ipynb`
 
 ## Current Status
 
-- Baseline, tree, and NeuralProphet workflows are implemented
-- Segmented South vs Others ETS workflow is implemented in 04
-- 03b and 04 export comparable model tables for reporting
-- EDA and profile reports are available under `reports/`
+- 01-03 workflow documentation is current in this README
+- notebook 03a is aligned to credit-reporting share targets
+- notebook reports for 01, 02, and 03a are available under `reports/2026-03-31/`
+- notebook 04 content is deferred from README coverage until explicitly requested
