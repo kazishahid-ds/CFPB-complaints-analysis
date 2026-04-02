@@ -1,6 +1,6 @@
 #!/bin/sh
 
-protected_files="data/complaints.csv data/processed/credit_card_dataset.parquet"
+protected_files="data/complaints.csv data/processed/credit_card_dataset.parquet data/complaints_cleaned.parquet"
 max_bytes=95000000
 
 for protected_file in $protected_files; do

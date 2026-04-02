@@ -1,24 +1,22 @@
-# Core data stack
+# Core data stack (01-03 notebooks)
 numpy>=1.26
 pandas>=2.3
 pyarrow>=23.0
+fastparquet>=2024.11
 matplotlib>=3.10
 seaborn>=0.13
 
 # Modeling
 scikit-learn>=1.8
+scipy>=1.13
 statsmodels>=0.14
 xgboost>=3.1
 
 # EDA reporting
 ydata-profiling>=4.18
 sweetviz>=2.3
-wordcloud>=1.9
 
 # Notebook execution utilities
 jupyter>=1.1
 nbconvert>=7.0
 ipykernel>=7.0
-
-# Optional: deep-learning forecasting notebooks
-neuralprophet>=0.9
