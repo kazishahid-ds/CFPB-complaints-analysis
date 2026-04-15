@@ -1,4 +1,4 @@
-# Core data stack (01-03 notebooks)
+# Core data stack (01a-02b primary notebooks)
 numpy>=1.26
 pandas>=2.3
 pyarrow>=23.0
@@ -15,6 +15,9 @@ xgboost>=3.1
 # EDA reporting
 ydata-profiling>=4.18
 sweetviz>=2.3
+
+# Report export utilities
+python-docx>=1.1
 
 # Notebook execution utilities
 jupyter>=1.1

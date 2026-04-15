@@ -1,0 +1,10 @@
+Model,sMAPE_val,MAE_val,RMSE_val,sMAPE_test,MAE_test,RMSE_test,runtime_sec,Notes,Family
+Theta,8.203,0.056,0.064,2.011,0.017,0.026,0.039,Strong trend-seasonality balance,02a-baseline
+Naive,12.311,0.083,0.102,5.727,0.048,0.058,0.0,Too biased,02a-baseline
+"ARIMA(1, 1, 0)",11.998,0.081,0.1,5.99,0.051,0.06,4.49,No explicit seasonality (auto-selected orders),02a-baseline
+"SARIMA(1, 1, 0)x(0,0,1,12)",12.311,0.083,0.103,6.016,0.051,0.06,10.644,Strong seasonal baseline (auto-selected orders),02a-baseline
+ETS SES,12.142,0.082,0.101,6.075,0.051,0.061,0.031,May underfit trend,02a-baseline
+FFT,8.356,0.055,0.069,6.16,0.055,0.063,0.005,Seasonal frequency focus,02a-baseline
+ETS Holt-Winters,6.522,0.044,0.057,7.311,0.066,0.074,0.124,Can over/under-smooth peaks,02a-baseline
+Moving Average,13.408,0.09,0.109,8.697,0.072,0.08,0.0,Too flat,02a-baseline
+Seasonal Naive,23.195,0.146,0.164,10.594,0.087,0.095,0.0,Misses trend/regime shifts,02a-baseline
